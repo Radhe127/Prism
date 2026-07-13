@@ -1,0 +1,113 @@
+/* ---------- single-screen shell ---------- */
+
+.app {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  gap: 22px;
+  padding: 22px;
+  overflow: hidden;
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+}
+
+/* ---------- glass grid (all widgets, one screen) ---------- */
+
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 22px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  /* mirror the background through the glass */
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  /* lit rim + soft drop shadow = polished glass edge */
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04), var(--glass-shadow);
+  padding: 22px;
+  overflow: hidden;
+  min-height: 0;
+  min-width: 0;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease),
+    border-color 0.4s var(--ease), opacity 0.4s var(--ease);
+}
+
+/* specular sheen — makes the surface read like a mirror */
+.tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-sheen);
+  pointer-events: none;
+}
+
+.tile:hover {
+  transform: translateY(-3px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06), var(--glass-shadow-hover);
+  border-color: var(--glass-border-strong);
+}
+
+/* nav focus: spotlight one widget, dim the others */
+.focused {
+  border-color: rgba(34, 211, 238, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 0 1px rgba(34, 211, 238, 0.5),
+    0 0 38px rgba(34, 211, 238, 0.28), var(--glass-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.dimmed {
+  opacity: 0.5;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+  /* can't fit everything on one screen on small devices — relax to a column */
+  .app {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+  .shell {
+    height: auto;
+    flex: none;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: minmax(320px, auto);
+  }
+}
+
+@media (max-width: 520px) {
+  .app {
+    padding: 14px;
+    gap: 14px;
+  }
+  .grid {
+    gap: 14px;
+  }
+}

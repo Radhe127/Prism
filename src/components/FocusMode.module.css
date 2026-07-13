@@ -1,0 +1,327 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  height: 100%;
+  min-height: 0;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.titleWrap {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.icon {
+  color: var(--accent-blue);
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.5));
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.modeToggle {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+}
+
+.modeBtn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.modeBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.modeActive {
+  color: #051018;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  box-shadow: 0 4px 14px rgba(34, 211, 238, 0.3);
+}
+
+/* ---------- progress ring ---------- */
+
+.ringWrap {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: grid;
+  place-items: center;
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+}
+
+.ringTrack {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+.ringProg {
+  transition: stroke-dashoffset 0.4s linear, stroke 0.3s var(--ease);
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.ringFocus {
+  stroke: var(--accent-cyan);
+  color: rgba(34, 211, 238, 0.9);
+}
+
+.ringBreak {
+  stroke: var(--accent-purple);
+  color: rgba(168, 85, 247, 0.9);
+}
+
+.time {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.timeText {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 2.4rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+  background: linear-gradient(180deg, #fff, #bfe9ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.timeLabel {
+  font-size: 0.74rem;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* ---------- controls ---------- */
+
+.controls {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.2s var(--ease), filter 0.2s var(--ease),
+    background 0.2s var(--ease), opacity 0.2s var(--ease);
+}
+
+.primaryBtn {
+  color: #051018;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  box-shadow: 0 8px 22px rgba(34, 211, 238, 0.32);
+}
+
+.primaryBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.07);
+}
+
+.primaryBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.secondaryBtn {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+}
+
+.secondaryBtn:hover {
+  color: var(--text-primary);
+  border-color: var(--glass-border-strong);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- duration steppers ---------- */
+
+.durations {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+}
+
+.field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.fieldLabel {
+  font-size: 0.74rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+}
+
+.stepper button {
+  width: 34px;
+  height: 36px;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.stepper button:hover:not(:disabled) {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.stepper button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.stepper input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  -moz-appearance: textfield;
+}
+
+.stepper input::-webkit-outer-spin-button,
+.stepper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.stepper input:disabled {
+  opacity: 0.7;
+}
+
+/* ---------- notification hint ---------- */
+
+.notifHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  transition: background 0.2s var(--ease);
+}
+
+.notifHint:hover {
+  background: rgba(34, 211, 238, 0.18);
+}
+
+/* ---------- completion alert ---------- */
+
+.alert {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  animation: slideIn 0.4s var(--ease);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alertFocus {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.alertBreak {
+  background: rgba(34, 211, 238, 0.12);
+  border-color: rgba(34, 211, 238, 0.4);
+}
+
+.alertText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.alertText strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.alertText span {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.alertClose {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.alertClose:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.16);
+}

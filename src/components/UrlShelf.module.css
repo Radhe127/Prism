@@ -1,0 +1,325 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.titleWrap {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.icon {
+  color: var(--accent-cyan);
+  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.5));
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.count {
+  font-size: 0.74rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---------- add form ---------- */
+
+.form {
+  display: flex;
+  gap: 8px;
+}
+
+.input,
+.labelInput {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+}
+
+.labelInput {
+  width: 30%;
+  min-width: 110px;
+}
+
+.input::placeholder,
+.labelInput::placeholder {
+  color: var(--text-muted);
+}
+
+.input:focus,
+.labelInput:focus {
+  border-color: rgba(34, 211, 238, 0.6);
+  background: rgba(34, 211, 238, 0.06);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.14);
+}
+
+.addBtn {
+  padding: 0 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #051018;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  box-shadow: 0 6px 18px rgba(34, 211, 238, 0.3);
+  white-space: nowrap;
+  transition: transform 0.2s var(--ease), filter 0.2s var(--ease),
+    opacity 0.2s var(--ease);
+}
+
+.addBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 10px 24px rgba(34, 211, 238, 0.4);
+}
+
+.addBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.addBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ---------- preset chips ---------- */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.chip {
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease),
+    background 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.chip:hover:not(:disabled) {
+  color: var(--text-primary);
+  border-color: rgba(168, 85, 247, 0.5);
+  background: rgba(168, 85, 247, 0.12);
+  transform: translateY(-1px);
+}
+
+.chip:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---------- link list ---------- */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 16px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease),
+    transform 0.25s var(--ease);
+  animation: rowIn 0.4s var(--ease);
+}
+
+.row:hover {
+  border-color: var(--glass-border-strong);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+}
+
+@keyframes rowIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rowLink {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: inherit;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #051018;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.rowText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.rowLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowHost {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.openTag {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--accent-cyan);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.row:hover .openTag,
+.rowLink:focus-visible .openTag {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.delBtn {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.06);
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.delBtn:hover {
+  color: #fff;
+  background: rgba(236, 72, 153, 0.35);
+}
+
+/* ---------- empty state ---------- */
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex: 1;
+  text-align: center;
+  padding: 24px;
+}
+
+.emptyMark {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  border: 1px dashed var(--glass-border-strong);
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.emptyMark::after {
+  content: '+';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  color: var(--text-muted);
+}
+
+.empty p {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  max-width: 34ch;
+  line-height: 1.6;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 560px) {
+  .form {
+    flex-wrap: wrap;
+  }
+  .input {
+    flex: 1 1 100%;
+  }
+  .labelInput {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+  .addBtn {
+    flex: 0 0 auto;
+  }
+}
